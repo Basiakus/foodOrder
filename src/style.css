@@ -1,0 +1,242 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html body {
+  font-family: 'Montserrat', sans-serif; }
+  html body h1, html body h2, html body h3, html body h4 {
+    font-family: 'Lobster', cursive; }
+  html body #main {
+    width: 100%;
+    height: 100vh; }
+    html body #main .app {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      padding: 1%;
+      background-color: #c2c2d6;
+      /* CSSTransition */
+      /* end of CSSTransition */ }
+      html body #main .app .inventory, html body #main .app .order, html body #main .app .menu {
+        display: flex;
+        flex: 1;
+        background-color: white;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+        border: 5px double black;
+        padding: 1%;
+        margin: 1px;
+        flex-direction: column;
+        font-size: 2vw;
+        overflow: scroll;
+        overflow-x: hidden; }
+        html body #main .app .inventory h2, html body #main .app .order h2, html body #main .app .menu h2 {
+          margin: 10% 0; }
+      html body #main .app .menu .dish {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 3px double black;
+        padding: 3% 0; }
+        html body #main .app .menu .dish img {
+          width: 30%; }
+        html body #main .app .menu .dish .info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          width: 60%;
+          text-align: justify; }
+          html body #main .app .menu .dish .info h4 {
+            width: 100%;
+            font-size: .8em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; }
+            html body #main .app .menu .dish .info h4 span {
+              font-size: .6em;
+              color: red; }
+          html body #main .app .menu .dish .info p {
+            font-size: .6em;
+            margin-top: 3%; }
+          html body #main .app .menu .dish .info button {
+            background-color: white;
+            color: red;
+            border: none;
+            transition: .1s; }
+            html body #main .app .menu .dish .info button:hover {
+              transform: scale(0.97); }
+          html body #main .app .menu .dish .info button.unavailable {
+            pointer-events: none;
+            position: absolute;
+            border: 1px solid red;
+            padding: 1% 2%;
+            transform: rotate(10deg);
+            border-radius: 3px;
+            font-size: 1em; }
+      html body #main .app .order ul {
+        list-style-type: none;
+        width: 100%; }
+        html body #main .app .order ul li {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center; }
+          html body #main .app .order ul li.disable {
+            justify-content: center;
+            font-size: .7em; }
+            html body #main .app .order ul li.disable span {
+              flex: 2;
+              color: red;
+              margin: 0 2%; }
+          html body #main .app .order ul li .count {
+            flex: 8;
+            font-size: .6em;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden; }
+            html body #main .app .order ul li .count .counter {
+              display: flex;
+              position: relative;
+              align-items: center;
+              justify-content: center;
+              flex: 1; }
+              html body #main .app .order ul li .count .counter .counter-enter {
+                width: 100%;
+                position: absolute;
+                transition: .3s;
+                transform: translateY(-100%); }
+                html body #main .app .order ul li .count .counter .counter-enter.counter-enter-active {
+                  transform: translateY(0%); }
+              html body #main .app .order ul li .count .counter .counter-exit {
+                width: 100%;
+                position: absolute;
+                transform: translateY(0%);
+                transition: .3s; }
+                html body #main .app .order ul li .count .counter .counter-exit.counter-exit-active {
+                  transform: translateY(100%);
+                  color: blue; }
+            html body #main .app .order ul li .count .name {
+              flex: 7;
+              padding: 0 5%;
+              font-size: 1.2em;
+              color: black;
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              font-family: 'Lobster', cursive;
+              cursor: pointer; }
+              html body #main .app .order ul li .count .name:hover .delete {
+                opacity: 1; }
+              html body #main .app .order ul li .count .name .delete {
+                transition: .3s;
+                opacity: 0;
+                color: red;
+                font-size: 1em; }
+                html body #main .app .order ul li .count .name .delete:hover {
+                  cursor: pointer; }
+          html body #main .app .order ul li .price {
+            font-size: .7em;
+            flex: 2;
+            color: red;
+            font-family: 'Lobster', cursive; }
+      html body #main .app .order .globalPrice {
+        font-family: 'Lobster', cursive;
+        padding: 10%;
+        text-decoration: overline; }
+      html body #main .app .order-enter {
+        transform: translateX(-120%);
+        opacity: 0;
+        font-size: .5em;
+        transition: .5s; }
+        html body #main .app .order-enter.order-enter-active {
+          transform: translateX(0%);
+          opacity: 1;
+          font-size: 1em; }
+      html body #main .app .order-exit {
+        transform: translateX(0%);
+        opacity: 1;
+        font-size: 1em;
+        transition: .5s; }
+        html body #main .app .order-exit.order-exit-active {
+          transform: translateX(120%);
+          opacity: 0;
+          font-size: .5em; }
+      html body #main .app .inventory .addForm, html body #main .app .inventory .editDish {
+        border: 2px solid black;
+        margin: 1% 0;
+        width: 100%; }
+        html body #main .app .inventory .addForm .inputs, html body #main .app .inventory .editDish .inputs {
+          display: flex; }
+          html body #main .app .inventory .addForm .inputs input, html body #main .app .inventory .editDish .inputs input {
+            flex: 1;
+            text-align: center; }
+          html body #main .app .inventory .addForm .inputs select, html body #main .app .inventory .editDish .inputs select {
+            flex: 1;
+            text-align-last: center; }
+        html body #main .app .inventory .addForm textarea, html body #main .app .inventory .addForm input, html body #main .app .inventory .editDish textarea, html body #main .app .inventory .editDish input {
+          width: 100%;
+          resize: vertical;
+          text-align: center; }
+        html body #main .app .inventory .addForm input[type="submit"], html body #main .app .inventory .editDish input[type="submit"] {
+          width: 100%; }
+        html body #main .app .inventory .addForm button, html body #main .app .inventory .editDish button {
+          width: 100%;
+          margin: 0px; }
+    html body #main .wellcome, html body #main .notFound {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      border: 10px double black;
+      border-radius: 10px;
+      padding: 2%;
+      margin: 1px; }
+      html body #main .wellcome form, html body #main .notFound form {
+        text-transform: capitalize;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; }
+        html body #main .wellcome form input, html body #main .notFound form input {
+          text-transform: capitalize;
+          text-align: center;
+          width: 100%;
+          border: 1px solid black;
+          border-bottom: none;
+          padding: 2% 0;
+          font-size: 1.2em; }
+          html body #main .wellcome form input:focus, html body #main .notFound form input:focus {
+            outline: none; }
+        html body #main .wellcome form button, html body #main .notFound form button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          text-transform: capitalize;
+          width: 100%;
+          background-color: white;
+          color: black;
+          border: 1px solid black;
+          border-top: none;
+          transition: .2s;
+          position: relative; }
+          html body #main .wellcome form button span, html body #main .notFound form button span {
+            transition: .3s;
+            position: absolute;
+            right: 23%;
+            font-size: 1.2em; }
+          html body #main .wellcome form button:hover, html body #main .notFound form button:hover {
+            color: white;
+            background-color: black; }
+            html body #main .wellcome form button:hover span, html body #main .notFound form button:hover span {
+              right: 15%; }

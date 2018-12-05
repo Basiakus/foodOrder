@@ -1,0 +1,306 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	//border: 1px solid red;
+}
+html {
+	body {
+		font-family: 'Montserrat', sans-serif;
+		h1, h2, h3, h4 {
+			font-family: 'Lobster', cursive;
+		}
+		#main {
+			width: 100%;
+			height: 100vh;
+			.app {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: row;
+				padding: 1%;
+				background-color: rgb(194, 194, 214);
+				.inventory, .order, .menu {
+					display: flex;
+					flex: 1;
+					background-color: white;
+					align-items: center;
+					text-align: center;
+					height: 100%;
+					border: 5px double black;
+					padding: 1%;
+					margin: 1px;
+					flex-direction: column;
+					font-size: 2vw;
+					overflow: scroll;
+					overflow-x: hidden;
+					h2 {
+						margin: 10% 0;
+					}
+				}
+				.menu {
+					.dish {
+						width: 100%;
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+						justify-content: space-between;
+						border-bottom: 3px double black;
+						padding: 3% 0;
+						img {
+							width: 30%;
+						}
+						.info {
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+							justify-content: center;
+							position: relative;
+							width: 60%;
+							text-align: justify;
+							h4 {
+								width: 100%;
+								font-size: .8em;
+								display: flex;
+								align-items: center;
+								justify-content: space-between;
+								span {
+									font-size: .6em;
+									color: red;
+								}
+							}
+							p {
+								font-size: .6em;
+								margin-top: 3%;
+							}
+							button {
+								background-color: white;
+								color: red;
+								border: none;
+								transition: .1s;
+								&:hover {
+									transform: scale(.97);
+								}
+							}
+							button.unavailable {
+								pointer-events: none;
+								position: absolute;
+								border: 1px solid red;
+								padding: 1% 2%;
+								transform: rotate(10deg);
+								border-radius: 3px;
+								font-size: 1em;
+							}
+						}
+
+					}
+				}
+				.order {
+					ul {
+						list-style-type: none;
+						width: 100%;
+						li {
+							display: flex;
+							flex-direction: row;
+							justify-content: space-between;
+							align-items: center;
+							&.disable {
+								justify-content: center;
+								font-size: .7em;
+								span {
+									flex: 2;
+									color: red;
+									margin: 0 2%;
+								}
+							}
+							.count {
+								flex: 8;
+								font-size: .6em;
+								display: flex;
+								flex-direction: row;
+								align-items: center;
+								justify-content: space-between;
+								overflow: hidden;
+								.counter {
+									display: flex;
+									position: relative;
+									align-items: center;
+									justify-content: center;
+									flex: 1;
+									.counter-enter {
+										width: 100%;
+										position: absolute;
+										transition: .3s;
+										transform: translateY(-100%);
+										&.counter-enter-active {
+											transform: translateY(0%);
+										}
+									}
+									.counter-exit {
+										width: 100%;
+										position: absolute;
+										transform: translateY(0%);
+										transition: .3s;
+										&.counter-exit-active {
+											transform: translateY(100%);
+											color: blue;
+										}
+									}								
+								}
+								.name {
+									flex: 7;
+									padding: 0 5%;
+									font-size: 1.2em;
+									color: black;
+									display: flex;
+									flex-direction: row;
+									justify-content: space-between;
+									font-family: 'Lobster', cursive;
+									cursor: pointer;
+									&:hover {
+										.delete {
+											opacity: 1;
+										}
+									}						
+									.delete {
+										transition: .3s;
+										opacity: 0;
+										color: red;
+										font-size: 1em;
+										&:hover {
+											cursor: pointer;
+										}
+									}
+								}
+							}
+							.price {
+								font-size: .7em;
+								flex: 2;
+								color: red;
+								font-family: 'Lobster', cursive;
+							}
+						}
+					}
+					.globalPrice {
+						font-family: 'Lobster', cursive;
+						padding: 10%;
+						text-decoration: overline;
+					}
+				}
+				/* CSSTransition */
+				.order-enter {
+					transform: translateX(-120%);
+					opacity: 0;
+					font-size: .5em;
+					transition: .5s;
+
+					&.order-enter-active {
+						transform: translateX(0%);
+						opacity: 1;
+						font-size: 1em;
+					}
+				}
+				.order-exit {
+					transform: translateX(0%);
+					opacity: 1;
+					font-size: 1em;
+					transition: .5s;
+					&.order-exit-active {
+						transform: translateX(120%);
+						opacity: 0;
+						font-size: .5em;
+					}
+
+				}
+				/* end of CSSTransition */
+				.inventory {
+					.addForm , .editDish {
+						border: 2px solid black;
+						margin: 1% 0;
+						width: 100%;
+						.inputs {
+							display: flex;
+							input {
+								flex: 1;
+								text-align: center;
+							}
+							select {
+								flex: 1;
+								text-align-last: center;
+							}
+						}
+						textarea, input {
+							width: 100%;
+							resize: vertical;
+							text-align: center;
+						}
+						input[type="submit"] {
+							width: 100%;
+						}
+						button {
+							width: 100%;
+							margin: 0px;
+						}
+					}
+				}
+			}
+			.wellcome, .notFound {
+				display: flex;
+				flex: 1;
+				justify-content: center;
+				align-items: center;
+				height: 100%;
+				border: 10px double black;
+				border-radius: 10px;
+				padding: 2%;
+				margin: 1px;
+				form {
+					text-transform: capitalize;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					flex-direction: column;
+					input {
+						text-transform: capitalize;
+						text-align: center;
+						width: 100%;
+						border: 1px solid black;
+						border-bottom: none;
+						padding: 2% 0;
+						font-size: 1.2em;
+						&:focus {
+							outline: none;
+						}
+					}
+					button {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						text-align: center;
+						text-transform: capitalize;
+						width: 100%;
+						background-color: white;
+						color: black;
+						border: 1px solid black;
+						border-top: none;
+						transition: .2s;
+						position: relative;
+						span {
+							transition: .3s;
+							position: absolute;
+							right: 23%;
+							font-size: 1.2em;
+						}
+						&:hover {
+							color: white;
+							background-color: black;
+							span {
+								right: 15%;
+							}
+						} 
+					}
+				}
+			}
+		}
+	}
+}
